@@ -43,6 +43,14 @@ class Parser:
         if not self._flag:
             Parser._error("MAC", self._line, self._errm)
 
+        self._parse_symbs()
+        if not self._flag:
+            Parser._error("LAB", self._line, self._errm)
+
+        self._parse_comms()
+        if not self._flag:
+            Parser._error("COM", self._line, self._errm)
+
         # IDEJA
         # 1. Iz asemblerske datoteke izbaciti sve razmake i komentare. Sjetite
         #    se kako komentari u hack asembleru mogu biti jednolinijski i
