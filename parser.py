@@ -39,42 +39,9 @@ class Parser:
         if not self._flag:
             Parser._error("C&W", self._line, self._errm)
 
-        # try:
-        #     self._file = open(filename + "_premacro.asm", "w")
-        # except:
-        #     Parser._error("File", -1, "Cannot open destination file.")
-        #     return
-
-        # try:
-        #     self._write_file()
-        # except:
-        #     Parser._error("File", -1, "Cannot write to destination file.")
-        #     return
-
         self._parse_macros()
         if not self._flag:
             Parser._error("MAC", self._line, self._errm)
-
-        try:
-            self._file = open(filename + "_precomp.asm", "w")
-        except:
-            Parser._error("File", -1, "Cannot open destination file.")
-            return
-
-        try:
-            self._write_file()
-        except:
-            Parser._error("File", -1, "Cannot write to destination file.")
-            return
-
-        # Parsiramo simbole
-        self._parse_symbs()
-        if not self._flag:
-            Parser._error("LAB", self._line, self._errm)
-
-        self._parse_comms()
-        if not self._flag:
-            Parser._error("COM", self._line, self._errm)
 
         # IDEJA
         # 1. Iz asemblerske datoteke izbaciti sve razmake i komentare. Sjetite
